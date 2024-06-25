@@ -1,19 +1,15 @@
-const { Events } = require('discord.js');
+import { Events } from 'discord.js';
 
-module.exports = {
-    name:  Events.MessageCreate,
-    async execute(message) {
+export const name = Events.MessageCreate
 
-        if (message.channelId ==='722706445908312176') {
-            return;
-        } 
-        const contents = message.toString();
+export async function execute(message) {
 
-        const channel = message.guild.channels.fetch('722706445908312176');
-        function some_func(channel){
-            channel.send(contents + ` was sent by ${message.author} in ${message.channel}`);
-        }
-        channel.then(channel => some_func(channel))
+    if (message.channelId ==='722706445908312176') {
+        return;
+    } 
+    const contents = message.toString();
 
-    },
-};
+    message.guild.channels.fetch('722706445908312176')
+        .then(channel => channel.send(contents + ` was sent by ${message.author} in ${message.channel}`))
+        .catch(console.error);
+}

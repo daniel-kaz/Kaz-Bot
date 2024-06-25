@@ -1,11 +1,8 @@
+import { SlashCommandBuilder } from 'discord.js';
 
-const { SlashCommandBuilder } = require('discord.js');
+export const data = new SlashCommandBuilder().setName('server').setDescription("returns information about the server");
 
-module.exports = {
-    data: new SlashCommandBuilder().setName('server').setDescription("returns information about the server"),
-
-    async execute(interaction) {
-        await interaction.reply(`The server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`);
-    },
+export async function execute(interaction) {
+    await interaction.reply(`The server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`);
 }
 
