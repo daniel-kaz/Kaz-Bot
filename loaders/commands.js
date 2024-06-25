@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export async function loadSlashCommands(client){
-    const foldersPath = join(__dirname, 'commands');
+    const foldersPath = join(__dirname, '../commands');
     const commandFolders = fs.readdirSync(foldersPath);
 
     for (const folder of commandFolders) {
